@@ -204,6 +204,7 @@ fun CommentOrPostNodeHeader(
     isModerator: Boolean,
     isCommunityBanned: Boolean,
     onLongClick: () -> Unit = {},
+    onClick: () -> Unit = {}
 ) {
     FlowRow(
         mainAxisAlignment = FlowMainAxisAlignment.SpaceBetween,
@@ -216,8 +217,8 @@ fun CommentOrPostNodeHeader(
             )
             .combinedClickable(
                 onLongClick = onLongClick,
-                onClick = {},
-            ),
+                onClick = onClick
+            )
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(SMALL_PADDING),

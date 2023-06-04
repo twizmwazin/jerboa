@@ -57,6 +57,7 @@ fun CommentReplyNodeHeader(
     score: Int,
     myVote: Int?,
     onLongClick: () -> Unit = {},
+    onClick: () -> Unit = {}
 ) {
     CommentOrPostNodeHeader(
         creator = commentReplyView.creator,
@@ -70,6 +71,7 @@ fun CommentReplyNodeHeader(
         isModerator = false,
         isCommunityBanned = commentReplyView.creator_banned_from_community,
         onLongClick = onLongClick,
+        onClick = onClick
     )
 }
 
@@ -286,7 +288,7 @@ fun CommentReplyNode(
             onPersonClick = onPersonClick,
             score = score,
             myVote = myVote,
-            onLongClick = {
+            onClick = {
                 isExpanded = !isExpanded
             },
         )
