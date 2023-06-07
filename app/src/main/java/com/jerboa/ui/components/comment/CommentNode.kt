@@ -385,7 +385,7 @@ private fun ShowMoreChildrenNode(
     depth: Int,
     commentView: CommentView,
     onFetchChildrenClick: (commentView: CommentView) -> Unit,
-    isCollapsedByParent: Boolean
+    isCollapsedByParent: Boolean,
 ) {
     val newDepth = depth + 1
 
