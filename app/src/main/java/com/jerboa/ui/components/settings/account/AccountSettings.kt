@@ -20,8 +20,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.jerboa.R
+import com.jerboa.api.types.SaveUserSettings
 import com.jerboa.api.uploadPictrsImage
-import com.jerboa.datatypes.api.SaveUserSettings
 import com.jerboa.db.Account
 import com.jerboa.imageInputStreamFromUri
 import com.jerboa.ui.components.common.*

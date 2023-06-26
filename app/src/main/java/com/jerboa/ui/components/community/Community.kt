@@ -14,9 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.R
-import com.jerboa.datatypes.CommunityView
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.SubscribedType
+import com.jerboa.api.types.CommunityView
+import com.jerboa.api.types.SortType
+import com.jerboa.api.types.SubscribedType
 import com.jerboa.datatypes.sampleCommunityView
 import com.jerboa.ui.components.common.IconAndTextDrawerItem
 import com.jerboa.ui.components.common.LargerCircularIcon

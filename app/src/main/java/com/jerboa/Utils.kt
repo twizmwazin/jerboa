@@ -51,8 +51,16 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jerboa.api.API
 import com.jerboa.api.DEFAULT_INSTANCE
+import com.jerboa.api.types.Comment
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.CommunityModeratorView
+import com.jerboa.api.types.GetUnreadCountResponse
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PostView
+import com.jerboa.api.types.SortType
 import com.jerboa.datatypes.* // ktlint-disable no-unused-imports
-import com.jerboa.datatypes.api.GetUnreadCountResponse
 import com.jerboa.db.Account
 import com.jerboa.ui.components.home.HomeViewModel
 import com.jerboa.ui.components.home.SiteViewModel
@@ -398,25 +406,25 @@ fun parseUrl(url: String): String? {
             val (community, host) = url.split("@", limit = 2)
             return "https://$host$community"
         }
-        return "https://${API.currentInstance}$url"
+        return "https://${API!!.currentInstance}$url"
     } else if (url.startsWith("/u/")) {
         if (url.count({ c -> c == '@' }) == 1) {
             val (userPath, host) = url.split("@", limit = 2)
             return "https://$host$userPath"
         }
-        return "https://${API.currentInstance}$url"
+        return "https://${API!!.currentInstance}$url"
     } else if (url.startsWith("!")) {
         if (url.count({ c -> c == '@' }) == 1) {
             val (community, host) = url.substring(1).split("@", limit = 2)
             return "https://$host/c/$community"
         }
-        return "https://${API.currentInstance}/c/${url.substring(1)}"
+        return "https://${API!!.currentInstance}/c/${url.substring(1)}"
     } else if (url.startsWith("@")) {
         if (url.count({ c -> c == '@' }) == 2) {
             val (user, host) = url.substring(1).split("@", limit = 2)
             return "https://$host/u/$user"
         }
-        return "https://${API.currentInstance}/u/${url.substring(1)}"
+        return "https://${API!!.currentInstance}/u/${url.substring(1)}"
     }
     return null
 }
@@ -523,7 +531,7 @@ fun closeDrawer(
     }
 }
 
-fun personNameShown(person: PersonSafe, federatedName: Boolean = false): String {
+fun personNameShown(person: Person, federatedName: Boolean = false): String {
     return if (!federatedName) {
         person.display_name ?: person.name
     } else {
@@ -536,7 +544,7 @@ fun personNameShown(person: PersonSafe, federatedName: Boolean = false): String 
     }
 }
 
-fun communityNameShown(community: CommunitySafe): String {
+fun communityNameShown(community: Community): String {
     return if (community.local) {
         community.title
     } else {
@@ -688,7 +696,7 @@ fun isPostCreator(commentView: CommentView): Boolean {
     return commentView.creator.id == commentView.post.creator_id
 }
 
-fun isModerator(person: PersonSafe, moderators: List<CommunityModeratorView>): Boolean {
+fun isModerator(person: Person, moderators: List<CommunityModeratorView>): Boolean {
     return moderators.map { it.moderator.id }.contains(person.id)
 }
 
@@ -765,7 +773,7 @@ fun fetchInitialData(
     homeViewModel: HomeViewModel,
 ) {
     if (account != null) {
-        API.changeLemmyInstance(account.instance)
+        API!!.currentInstance = account.instance
 
         homeViewModel.fetchPosts(
             account = account,
@@ -776,7 +784,7 @@ fun fetchInitialData(
         homeViewModel.fetchUnreadCounts(account = account)
     } else {
         Log.d("jerboa", "Fetching posts for anonymous user")
-        API.changeLemmyInstance(DEFAULT_INSTANCE)
+        API!!.currentInstance = DEFAULT_INSTANCE
         homeViewModel.fetchPosts(
             account = null,
             clear = true,

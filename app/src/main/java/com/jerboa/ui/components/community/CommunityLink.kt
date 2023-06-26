@@ -22,9 +22,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.jerboa.R
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.CommunityView
 import com.jerboa.communityNameShown
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.CommunityView
 import com.jerboa.datatypes.sampleCommunitySafe
 import com.jerboa.datatypes.sampleCommunityView
 import com.jerboa.ui.components.common.CircularIcon
@@ -38,7 +38,7 @@ import com.jerboa.ui.theme.SMALL_PADDING
 
 @Composable
 fun CommunityName(
-    community: CommunitySafe,
+    community: Community,
     color: Color = MaterialTheme.colorScheme.primary,
     style: TextStyle = MaterialTheme.typography.bodyMedium,
     modifier: Modifier = Modifier,
@@ -62,14 +62,14 @@ fun CommunityNamePreview() {
 @Composable
 fun CommunityLink(
     modifier: Modifier = Modifier,
-    community: CommunitySafe,
+    community: Community,
     usersPerMonth: Int? = null,
     color: Color = MaterialTheme.colorScheme.primary,
     spacing: Dp = SMALL_PADDING,
     size: Dp = ICON_SIZE,
     thumbnailSize: Int = ICON_THUMBNAIL_SIZE,
     style: TextStyle = MaterialTheme.typography.bodyMedium,
-    onClick: (community: CommunitySafe) -> Unit,
+    onClick: (community: Community) -> Unit,
     showDefaultIcon: Boolean,
 ) {
     Row(
@@ -107,8 +107,8 @@ fun CommunityLink(
 
 @Composable
 fun CommunityLinkLarger(
-    community: CommunitySafe,
-    onClick: (community: CommunitySafe) -> Unit,
+    community: Community,
+    onClick: (community: Community) -> Unit,
     showDefaultIcon: Boolean,
 ) {
     CommunityLink(
@@ -129,7 +129,7 @@ fun CommunityLinkLarger(
 @Composable
 fun CommunityLinkLargerWithUserCount(
     communityView: CommunityView,
-    onClick: (community: CommunitySafe) -> Unit,
+    onClick: (community: Community) -> Unit,
     showDefaultIcon: Boolean,
 ) {
     CommunityLink(

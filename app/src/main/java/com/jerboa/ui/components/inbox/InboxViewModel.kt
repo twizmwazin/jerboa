@@ -243,7 +243,7 @@ class InboxViewModel : ViewModel() {
     }
 
     fun blockCommunity(
-        community: CommunitySafe,
+        community: Community,
         account: Account,
         ctx: Context,
     ) {
@@ -257,7 +257,7 @@ class InboxViewModel : ViewModel() {
     }
 
     fun blockCreator(
-        creator: PersonSafe,
+        creator: Person,
         account: Account,
         ctx: Context,
     ) {

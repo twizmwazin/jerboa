@@ -8,10 +8,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jerboa.api.searchWrapper
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.SearchType
-import com.jerboa.datatypes.SortType
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.SearchType
+import com.jerboa.api.types.SortType
 import com.jerboa.db.Account
 import com.jerboa.ui.components.home.SiteViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +20,7 @@ class CommunityListViewModel : ViewModel() {
     // This can be either CommunityView, or CommunityFollowerView
     var communityList = mutableStateListOf<Any>()
         private set
-    var selectedCommunity by mutableStateOf<CommunitySafe?>(null)
+    var selectedCommunity by mutableStateOf<Community?>(null)
         private set
     var loading = mutableStateOf(false)
         private set
@@ -33,14 +33,14 @@ class CommunityListViewModel : ViewModel() {
                 sortType = SortType.TopAll,
                 listingType = ListingType.All,
                 query = query,
-                searchType = SearchType.Communities,
+                searchType = SearchType.COMMUNITIES,
             )?.communities
             communityList.clear()
             communityList.addAll(communities.orEmpty())
         }
     }
 
-    fun selectCommunity(community: CommunitySafe) {
+    fun selectCommunity(community: Community) {
         selectedCommunity = community
     }
 

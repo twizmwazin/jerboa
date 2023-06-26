@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.R
-import com.jerboa.datatypes.CommunitySafe
+import com.jerboa.api.types.Community
 import com.jerboa.datatypes.sampleCommunitySafe
 import com.jerboa.db.Account
 import com.jerboa.ui.components.common.CircularIcon
@@ -108,7 +108,7 @@ fun CreatePostBody(
     onUrlChange: (url: String) -> Unit,
     onPickedImage: (image: Uri) -> Unit,
     image: Uri? = null,
-    community: CommunitySafe? = null,
+    community: Community? = null,
     navController: NavController = rememberNavController(),
     formValid: (valid: Boolean) -> Unit,
     suggestedTitle: String? = null,

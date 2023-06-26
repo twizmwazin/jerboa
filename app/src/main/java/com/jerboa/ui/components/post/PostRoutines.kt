@@ -8,10 +8,10 @@ import com.jerboa.api.deletePostWrapper
 import com.jerboa.api.fetchPostsWrapper
 import com.jerboa.api.likePostWrapper
 import com.jerboa.api.savePostWrapper
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.PostView
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.api.DeletePost
+import com.jerboa.api.types.DeletePost
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.PostView
+import com.jerboa.api.types.SortType
 import com.jerboa.db.Account
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -92,7 +92,7 @@ fun likePostRoutine(
                     voteType,
                     account,
                     ctx,
-                )?.post_view
+                )?.postView
                 postView.value = updatedPostView
                 posts?.also {
                     findAndUpdatePost(posts, updatedPostView)
@@ -115,7 +115,7 @@ fun savePostRoutine(
                 pv,
                 account,
                 ctx,
-            )?.post_view
+            )?.postView
             postView.value = updatedPostView
             posts?.also {
                 findAndUpdatePost(posts, updatedPostView)
@@ -138,7 +138,7 @@ fun deletePostRoutine(
                 deleted = !pv.post.deleted,
                 auth = account.jwt,
             )
-            val deletedPostView = deletePostWrapper(form, ctx)?.post_view
+            val deletedPostView = deletePostWrapper(form, ctx)?.postView
             postView.value = deletedPostView
             posts?.also {
                 findAndUpdatePost(posts, deletedPostView)

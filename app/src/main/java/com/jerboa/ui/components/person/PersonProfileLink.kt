@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.jerboa.R
-import com.jerboa.datatypes.PersonSafe
+import com.jerboa.api.types.Person
 import com.jerboa.datatypes.samplePersonSafe
 import com.jerboa.personNameShown
 import com.jerboa.ui.components.common.CircularIcon
@@ -28,7 +28,7 @@ import com.jerboa.ui.theme.SMALL_PADDING
 
 @Composable
 fun PersonName(
-    person: PersonSafe?,
+    person: Person?,
     color: Color = MaterialTheme.colorScheme.tertiary,
     isPostCreator: Boolean = false,
 ) {
@@ -56,7 +56,7 @@ fun PersonNamePreview() {
 
 @Composable
 fun PersonProfileLink(
-    person: PersonSafe,
+    person: Person,
     onClick: (personId: Int) -> Unit,
     showTags: Boolean = false,
     isPostCreator: Boolean = false,

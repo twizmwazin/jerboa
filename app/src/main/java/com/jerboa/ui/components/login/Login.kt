@@ -33,7 +33,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.DEFAULT_LEMMY_INSTANCES
 import com.jerboa.R
-import com.jerboa.datatypes.api.Login
+import com.jerboa.api.types.Login
 import com.jerboa.db.Account
 import com.jerboa.onAutofill
 

@@ -33,8 +33,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.R
-import com.jerboa.datatypes.PersonViewSafe
-import com.jerboa.datatypes.SortType
+import com.jerboa.api.types.PersonView
+import com.jerboa.api.types.SortType
 import com.jerboa.datatypes.samplePersonView
 import com.jerboa.getLocalizedSortingTypeName
 import com.jerboa.personNameShown
@@ -53,7 +53,7 @@ import com.jerboa.ui.theme.muted
 
 @Composable
 fun PersonProfileTopSection(
-    personView: PersonViewSafe,
+    personView: PersonView,
     modifier: Modifier = Modifier,
     showAvatar: Boolean,
 ) {
@@ -123,7 +123,7 @@ fun PersonProfileTopSection(
 }
 
 @Composable
-fun CommentsAndPosts(personView: PersonViewSafe) {
+fun CommentsAndPosts(personView: PersonView) {
     Row {
         Text(
             text = stringResource(R.string.person_profile_posts, personView.counts.post_count),

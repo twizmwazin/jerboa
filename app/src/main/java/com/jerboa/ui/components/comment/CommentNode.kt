@@ -56,16 +56,16 @@ import com.jerboa.CommentNodeData
 import com.jerboa.InstantScores
 import com.jerboa.R
 import com.jerboa.VoteType
+import com.jerboa.api.types.Comment
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.CommunityModeratorView
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.Post
 import com.jerboa.border
 import com.jerboa.buildCommentsTree
 import com.jerboa.calculateCommentOffset
 import com.jerboa.calculateNewInstantScores
-import com.jerboa.datatypes.Comment
-import com.jerboa.datatypes.CommentView
-import com.jerboa.datatypes.CommunityModeratorView
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.Post
 import com.jerboa.datatypes.sampleCommentView
 import com.jerboa.datatypes.sampleCommunitySafe
 import com.jerboa.datatypes.samplePost
@@ -198,11 +198,11 @@ fun LazyListScope.commentNodeItem(
     onEditCommentClick: (commentView: CommentView) -> Unit,
     onDeleteCommentClick: (commentView: CommentView) -> Unit,
     onPersonClick: (personId: Int) -> Unit,
-    onCommunityClick: (community: CommunitySafe) -> Unit,
+    onCommunityClick: (community: Community) -> Unit,
     onPostClick: (postId: Int) -> Unit,
     onReportClick: (commentView: CommentView) -> Unit,
     onCommentLinkClick: (commentView: CommentView) -> Unit,
-    onBlockCreatorClick: (creator: PersonSafe) -> Unit,
+    onBlockCreatorClick: (creator: Person) -> Unit,
     onFetchChildrenClick: (commentView: CommentView) -> Unit,
     showCollapsedCommentContent: Boolean,
     showPostAndCommunityContext: Boolean = false,
@@ -449,8 +449,8 @@ private fun ShowMoreChildrenNode(
 @Composable
 fun PostAndCommunityContextHeader(
     post: Post,
-    community: CommunitySafe,
-    onCommunityClick: (community: CommunitySafe) -> Unit,
+    community: Community,
+    onCommunityClick: (community: Community) -> Unit,
     onPostClick: (postId: Int) -> Unit,
 ) {
     Column(
@@ -500,7 +500,7 @@ fun CommentFooterLine(
     onDeleteCommentClick: (commentView: CommentView) -> Unit,
     onReportClick: (commentView: CommentView) -> Unit,
     onCommentLinkClick: (commentView: CommentView) -> Unit,
-    onBlockCreatorClick: (creator: PersonSafe) -> Unit,
+    onBlockCreatorClick: (creator: Person) -> Unit,
     onPersonClick: (personId: Int) -> Unit,
     onClick: () -> Unit,
     onLongClick: () -> Unit,

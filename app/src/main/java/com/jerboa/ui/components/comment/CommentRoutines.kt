@@ -18,17 +18,17 @@ import com.jerboa.api.markCommentReplyAsReadWrapper
 import com.jerboa.api.markPersonMentionAsReadWrapper
 import com.jerboa.api.retrofitErrorHandler
 import com.jerboa.api.saveCommentWrapper
-import com.jerboa.datatypes.CommentReplyView
-import com.jerboa.datatypes.CommentSortType
-import com.jerboa.datatypes.CommentView
-import com.jerboa.datatypes.PersonMentionView
-import com.jerboa.datatypes.PrivateMessageView
-import com.jerboa.datatypes.api.CreateComment
-import com.jerboa.datatypes.api.CreatePrivateMessage
-import com.jerboa.datatypes.api.DeleteComment
-import com.jerboa.datatypes.api.EditComment
-import com.jerboa.datatypes.api.GetPersonMentions
-import com.jerboa.datatypes.api.GetReplies
+import com.jerboa.api.types.CommentReplyView
+import com.jerboa.api.types.CommentSortType
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.CreateComment
+import com.jerboa.api.types.CreatePrivateMessage
+import com.jerboa.api.types.DeleteComment
+import com.jerboa.api.types.EditComment
+import com.jerboa.api.types.GetPersonMentions
+import com.jerboa.api.types.GetReplies
+import com.jerboa.api.types.PersonMentionView
+import com.jerboa.api.types.PrivateMessageView
 import com.jerboa.db.Account
 import com.jerboa.findAndUpdateCommentInTree
 import com.jerboa.insertCommentIntoTree
@@ -432,7 +432,7 @@ fun fetchRepliesRoutine(
     scope: CoroutineScope,
 ) {
     scope.launch {
-        val api = API.getInstance()
+        val api = API!!
         try {
             loading.value = true
 
@@ -492,7 +492,7 @@ fun fetchPersonMentionsRoutine(
     scope: CoroutineScope,
 ) {
     scope.launch {
-        val api = API.getInstance()
+        val api = API!!
         try {
             loading.value = true
 

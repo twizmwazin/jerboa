@@ -42,7 +42,7 @@ import arrow.core.Either
 import com.jerboa.PostViewMode
 import com.jerboa.R
 import com.jerboa.VoteType
-import com.jerboa.datatypes.CommentSortType
+import com.jerboa.api.types.CommentSortType
 import com.jerboa.db.AccountViewModel
 import com.jerboa.getCommentParentId
 import com.jerboa.getDepthFromComment

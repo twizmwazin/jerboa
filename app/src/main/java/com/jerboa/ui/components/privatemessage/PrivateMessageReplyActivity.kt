@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.navigation.NavController
-import com.jerboa.datatypes.api.CreatePrivateMessage
+import com.jerboa.api.types.CreatePrivateMessage
 import com.jerboa.db.AccountViewModel
 import com.jerboa.ui.components.common.getCurrentAccount
 import com.jerboa.ui.components.home.SiteViewModel

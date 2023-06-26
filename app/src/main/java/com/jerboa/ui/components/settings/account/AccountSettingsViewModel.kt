@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.jerboa.api.saveUserSettingsWrapper
-import com.jerboa.datatypes.api.SaveUserSettings
+import com.jerboa.api.types.SaveUserSettings
 import com.jerboa.db.Account
 import com.jerboa.db.AccountRepository
 import com.jerboa.ui.components.home.SiteViewModel

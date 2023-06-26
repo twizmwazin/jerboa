@@ -9,10 +9,10 @@ import com.jerboa.api.API
 import com.jerboa.api.blockPersonWrapper
 import com.jerboa.api.markPrivateMessageAsReadWrapper
 import com.jerboa.api.retrofitErrorHandler
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.PrivateMessageView
-import com.jerboa.datatypes.api.BlockPerson
-import com.jerboa.datatypes.api.GetPrivateMessages
+import com.jerboa.api.types.BlockPerson
+import com.jerboa.api.types.GetPrivateMessages
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PrivateMessageView
 import com.jerboa.db.Account
 import com.jerboa.serializeToMap
 import com.jerboa.toastException
@@ -46,7 +46,7 @@ fun fetchPrivateMessagesRoutine(
     scope: CoroutineScope,
 ) {
     scope.launch {
-        val api = API.getInstance()
+        val api = API!!
         try {
             loading.value = true
 
@@ -76,7 +76,7 @@ fun fetchPrivateMessagesRoutine(
                     form = form
                         .serializeToMap(),
                 ),
-            ).private_messages
+            ).privateMessages
 
             if (clear) {
                 messages.clear()
@@ -113,7 +113,7 @@ fun markPrivateMessageAsReadRoutine(
 }
 
 fun blockPersonRoutine(
-    person: PersonSafe,
+    person: Person,
     block: Boolean,
     account: Account,
     ctx: Context,

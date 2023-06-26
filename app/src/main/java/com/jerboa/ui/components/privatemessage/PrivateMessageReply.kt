@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.R
-import com.jerboa.datatypes.PrivateMessageView
+import com.jerboa.api.types.PrivateMessageView
 import com.jerboa.datatypes.samplePrivateMessageView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.common.MarkdownTextField

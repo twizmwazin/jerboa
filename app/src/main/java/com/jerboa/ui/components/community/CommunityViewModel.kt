@@ -13,13 +13,13 @@ import com.jerboa.VoteType
 import com.jerboa.api.API
 import com.jerboa.api.followCommunityWrapper
 import com.jerboa.api.retrofitErrorHandler
-import com.jerboa.datatypes.CommunityModeratorView
-import com.jerboa.datatypes.CommunityView
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.PostView
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.api.GetCommunity
+import com.jerboa.api.types.CommunityModeratorView
+import com.jerboa.api.types.CommunityView
+import com.jerboa.api.types.GetCommunity
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PostView
+import com.jerboa.api.types.SortType
 import com.jerboa.db.Account
 import com.jerboa.loginFirstToast
 import com.jerboa.serializeToMap
@@ -101,7 +101,7 @@ class CommunityViewModel : ViewModel() {
         idOrName: Either<Int, String>,
         auth: String?,
     ) {
-        val api = API.getInstance()
+        val api = API!!
 
         viewModelScope.launch {
             val idOrNameStr = idOrName.fold({ id -> id.toString() }, { it })
@@ -149,7 +149,7 @@ class CommunityViewModel : ViewModel() {
     }
 
     fun blockCreator(
-        creator: PersonSafe,
+        creator: Person,
         account: Account,
         ctx: Context,
     ) {

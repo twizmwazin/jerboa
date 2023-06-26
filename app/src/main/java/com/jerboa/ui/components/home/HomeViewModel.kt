@@ -11,16 +11,16 @@ import androidx.lifecycle.viewModelScope
 import com.jerboa.VoteType
 import com.jerboa.api.API
 import com.jerboa.api.retrofitErrorHandler
-import com.jerboa.datatypes.CommentReplyView
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.PersonMentionView
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.PostView
-import com.jerboa.datatypes.PrivateMessageView
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.api.GetUnreadCount
-import com.jerboa.datatypes.api.GetUnreadCountResponse
+import com.jerboa.api.types.CommentReplyView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.GetUnreadCount
+import com.jerboa.api.types.GetUnreadCountResponse
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PersonMentionView
+import com.jerboa.api.types.PostView
+import com.jerboa.api.types.PrivateMessageView
+import com.jerboa.api.types.SortType
 import com.jerboa.db.Account
 import com.jerboa.serializeToMap
 import com.jerboa.toastException
@@ -89,7 +89,7 @@ class HomeViewModel : ViewModel() {
         account?.let {
             viewModelScope.launch {
                 try {
-                    val api = API.getInstance()
+                    val api = API!!
                     val form = GetUnreadCount(
                         auth = account.jwt,
                     )
@@ -139,7 +139,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun blockCommunity(
-        community: CommunitySafe,
+        community: Community,
         account: Account,
         ctx: Context,
     ) {
@@ -153,7 +153,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun blockCreator(
-        creator: PersonSafe,
+        creator: Person,
         account: Account,
         ctx: Context,
     ) {

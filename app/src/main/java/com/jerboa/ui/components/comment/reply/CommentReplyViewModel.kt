@@ -8,10 +8,10 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.jerboa.datatypes.CommentReplyView
-import com.jerboa.datatypes.CommentView
-import com.jerboa.datatypes.PersonMentionView
-import com.jerboa.datatypes.PostView
+import com.jerboa.api.types.CommentReplyView
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.PersonMentionView
+import com.jerboa.api.types.PostView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.comment.createCommentRoutine
 import com.jerboa.ui.components.person.PersonProfileViewModel

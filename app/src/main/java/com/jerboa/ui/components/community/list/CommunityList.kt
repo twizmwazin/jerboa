@@ -26,9 +26,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.R
-import com.jerboa.datatypes.CommunityFollowerView
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.CommunityView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.CommunityFollowerView
+import com.jerboa.api.types.CommunityView
 import com.jerboa.datatypes.sampleCommunityView
 import com.jerboa.ui.components.common.simpleVerticalScrollbar
 import com.jerboa.ui.components.community.CommunityLinkLarger
@@ -76,7 +76,7 @@ fun CommunityListHeader(
 @Composable
 fun CommunityListings(
     communities: List<Any>,
-    onClickCommunity: (community: CommunitySafe) -> Unit,
+    onClickCommunity: (community: Community) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val listState = rememberLazyListState()

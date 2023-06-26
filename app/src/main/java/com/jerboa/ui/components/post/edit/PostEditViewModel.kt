@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.jerboa.api.editPostWrapper
-import com.jerboa.datatypes.PostView
+import com.jerboa.api.types.PostView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.community.CommunityViewModel
 import com.jerboa.ui.components.home.HomeViewModel

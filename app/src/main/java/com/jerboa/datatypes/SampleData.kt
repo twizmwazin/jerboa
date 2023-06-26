@@ -1,5 +1,32 @@
 package com.jerboa.datatypes
 
+import com.jerboa.api.types.Comment
+import com.jerboa.api.types.CommentAggregates
+import com.jerboa.api.types.CommentReply
+import com.jerboa.api.types.CommentReplyView
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.CommunityAggregates
+import com.jerboa.api.types.CommunityView
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.LocalSite
+import com.jerboa.api.types.LocalSiteRateLimit
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PersonAggregates
+import com.jerboa.api.types.PersonMention
+import com.jerboa.api.types.PersonMentionView
+import com.jerboa.api.types.PersonView
+import com.jerboa.api.types.Post
+import com.jerboa.api.types.PostAggregates
+import com.jerboa.api.types.PostView
+import com.jerboa.api.types.PrivateMessage
+import com.jerboa.api.types.PrivateMessageView
+import com.jerboa.api.types.RegistrationMode
+import com.jerboa.api.types.Site
+import com.jerboa.api.types.SiteAggregates
+import com.jerboa.api.types.SiteView
+import com.jerboa.api.types.SubscribedType
+
 val samplePost = Post(
     id = 135129,
     name = "In a socialist world, would jobs still have probation periods ?",
@@ -92,7 +119,7 @@ val sampleImagePost = Post(
     language_id = 0,
 )
 
-val samplePersonSafe = PersonSafe(
+val samplePersonSafe = Person(
     id = 33401,
     name = "homeless",
     display_name = "No longer Homeless",
@@ -107,8 +134,6 @@ val samplePersonSafe = PersonSafe(
     local = true,
     banner = null,
     deleted = false,
-    inbox_url = "https://lemmy.ml/u/homeless/inbox",
-    shared_inbox_url = "https://lemmy.ml/inbox",
     matrix_user_id = null,
     admin = false,
     bot_account = false,
@@ -116,7 +141,7 @@ val samplePersonSafe = PersonSafe(
     instance_id = 0,
 )
 
-val samplePersonSafe2 = PersonSafe(
+val samplePersonSafe2 = Person(
     id = 33403,
     name = "gary_host_laptop",
     display_name = null,
@@ -129,8 +154,6 @@ val samplePersonSafe2 = PersonSafe(
     local = true,
     banner = null,
     deleted = false,
-    inbox_url = "https://lemmy.ml/u/homeless/inbox",
-    shared_inbox_url = "https://lemmy.ml/inbox",
     matrix_user_id = null,
     admin = false,
     bot_account = false,
@@ -138,7 +161,7 @@ val samplePersonSafe2 = PersonSafe(
     instance_id = 0,
 )
 
-val sampleCommunitySafe = CommunitySafe(
+val sampleCommunitySafe = Community(
     id = 14681,
     name = "socialism",
     title = "Socialism",
@@ -168,6 +191,7 @@ val samplePostAggregates = PostAggregates(
     featured_community = false,
     newest_comment_time_necro = "2022-01-02T04:02:44.592929",
     newest_comment_time = "2022-01-02T04:02:44.592929",
+    published = "2022-01-01T09:53:46.904077",
 )
 
 val samplePostView = PostView(
@@ -284,6 +308,7 @@ val sampleCommentAggregates = CommentAggregates(
     upvotes = 12,
     downvotes = 4,
     child_count = 0,
+    published = "2022-01-07T03:12:26.398434",
 )
 
 val sampleCommentView = CommentView(
@@ -335,8 +360,8 @@ val sampleCommentReply = CommentReply(
 
 val samplePersonMention = PersonMention(
     id = 30,
-    recipient_id = 20,
-    comment_id = 42,
+    recipientId = 20,
+    commentId = 42,
     read = false,
     published = "2022-01-01T09:53:46.904077",
 )
@@ -381,6 +406,7 @@ val sampleCommunityAggregates = CommunityAggregates(
     users_active_week = 98,
     users_active_month = 82,
     users_active_half_year = 91,
+    published = "2022-01-07T03:12:26.398434",
 )
 
 val sampleCommunityView = CommunityView(
@@ -399,7 +425,7 @@ val samplePersonAggregates = PersonAggregates(
     comment_score = 168,
 )
 
-val samplePersonView = PersonViewSafe(
+val samplePersonView = PersonView(
     person = samplePersonSafe,
     counts = samplePersonAggregates,
 )
@@ -452,7 +478,7 @@ val sampleLocalSite = LocalSite(
     application_email_admins = false,
     captcha_difficulty = "easy",
     captcha_enabled = false,
-    default_post_listing_type = "0",
+    default_post_listing_type = ListingType.Local,
     default_theme = "main",
     federation_debug = false,
     federation_enabled = true,
@@ -465,7 +491,7 @@ val sampleLocalSite = LocalSite(
     slur_filter_regex = null,
     updated = null,
     hide_modlog_mod_names = true,
-
+    reports_email_admins = false,
 )
 
 val sampleSiteAggregates = SiteAggregates(
@@ -485,5 +511,21 @@ val sampleSiteView = SiteView(
     site = sampleSite,
     counts = sampleSiteAggregates,
     local_site = sampleLocalSite,
-    taglines = null,
+    local_site_rate_limit = LocalSiteRateLimit(
+        id = 1,
+        local_site_id = 1,
+        message = 1,
+        message_per_second = 1,
+        post = 1,
+        post_per_second = 1,
+        register = 1,
+        register_per_second = 1,
+        image = 1,
+        image_per_second = 1,
+        comment = 1,
+        comment_per_second = 1,
+        search = 1,
+        search_per_second = 1,
+        published = "2023-01-01",
+    )
 )

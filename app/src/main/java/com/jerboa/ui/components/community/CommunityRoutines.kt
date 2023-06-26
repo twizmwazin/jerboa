@@ -4,14 +4,14 @@ import android.content.Context
 import android.widget.Toast
 import com.jerboa.R
 import com.jerboa.api.blockCommunityWrapper
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.api.BlockCommunity
+import com.jerboa.api.types.BlockCommunity
+import com.jerboa.api.types.Community
 import com.jerboa.db.Account
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 fun blockCommunityRoutine(
-    community: CommunitySafe,
+    community: Community,
     block: Boolean,
     account: Account,
     ctx: Context,

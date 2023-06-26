@@ -12,13 +12,13 @@ import arrow.core.Either
 import com.jerboa.VoteType
 import com.jerboa.api.API
 import com.jerboa.api.retrofitErrorHandler
-import com.jerboa.datatypes.CommentView
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.PostView
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.api.GetPersonDetails
-import com.jerboa.datatypes.api.GetPersonDetailsResponse
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.GetPersonDetails
+import com.jerboa.api.types.GetPersonDetailsResponse
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PostView
+import com.jerboa.api.types.SortType
 import com.jerboa.db.Account
 import com.jerboa.serializeToMap
 import com.jerboa.toastException
@@ -100,7 +100,7 @@ class PersonProfileViewModel : ViewModel() {
         changeSavedOnly: Boolean? = null,
         ctx: Context,
     ) {
-        val api = API.getInstance()
+        val api = API!!
 
         viewModelScope.launch {
             val idOrNameStr = idOrName.fold({ it.toString() }, { it })
@@ -140,7 +140,7 @@ class PersonProfileViewModel : ViewModel() {
                     person_id = personId,
                     username = userName,
                     auth = account?.jwt,
-                    sort = sortType.value.toString(),
+                    sort = sortType.value,
                     page = page.value,
                     saved_only = savedOnly.value,
                 )
@@ -158,7 +158,7 @@ class PersonProfileViewModel : ViewModel() {
     }
 
     fun blockCommunity(
-        community: CommunitySafe,
+        community: Community,
         account: Account,
         ctx: Context,
     ) {
@@ -172,7 +172,7 @@ class PersonProfileViewModel : ViewModel() {
     }
 
     fun blockPerson(
-        person: PersonSafe,
+        person: Person,
         account: Account,
         ctx: Context,
     ) {

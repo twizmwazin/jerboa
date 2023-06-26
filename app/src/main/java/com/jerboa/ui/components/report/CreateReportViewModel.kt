@@ -12,8 +12,8 @@ import androidx.navigation.NavController
 import com.jerboa.R
 import com.jerboa.api.createCommentReportWrapper
 import com.jerboa.api.createPostReportWrapper
-import com.jerboa.datatypes.api.CreateCommentReport
-import com.jerboa.datatypes.api.CreatePostReport
+import com.jerboa.api.types.CreateCommentReport
+import com.jerboa.api.types.CreatePostReport
 import com.jerboa.db.Account
 import kotlinx.coroutines.launch
 

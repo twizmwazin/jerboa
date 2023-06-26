@@ -37,9 +37,9 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import com.jerboa.R
 import com.jerboa.VoteType
-import com.jerboa.datatypes.CommentReplyView
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.PersonSafe
+import com.jerboa.api.types.CommentReplyView
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.Person
 import com.jerboa.datatypes.sampleCommentReplyView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.comment.CommentBody
@@ -106,7 +106,7 @@ fun CommentReplyNodeFooterLine(
     onViewSourceClick: () -> Unit,
     onReportClick: (commentReplyView: CommentReplyView) -> Unit,
     onCommentLinkClick: (commentReplyView: CommentReplyView) -> Unit,
-    onBlockCreatorClick: (creator: PersonSafe) -> Unit,
+    onBlockCreatorClick: (creator: Person) -> Unit,
     myVote: Int?,
     upvotes: Int,
     downvotes: Int,
@@ -300,11 +300,11 @@ fun CommentReplyNode(
     onSaveClick: (commentReplyView: CommentReplyView) -> Unit,
     onMarkAsReadClick: (commentReplyView: CommentReplyView) -> Unit,
     onPersonClick: (personId: Int) -> Unit,
-    onCommunityClick: (community: CommunitySafe) -> Unit,
+    onCommunityClick: (community: Community) -> Unit,
     onPostClick: (postId: Int) -> Unit,
     onReportClick: (commentReplyView: CommentReplyView) -> Unit,
     onCommentLinkClick: (commentReplyView: CommentReplyView) -> Unit,
-    onBlockCreatorClick: (creator: PersonSafe) -> Unit,
+    onBlockCreatorClick: (creator: Person) -> Unit,
     account: Account?,
     showAvatar: Boolean,
 ) {

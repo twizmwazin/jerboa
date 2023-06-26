@@ -64,13 +64,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.PostViewMode
 import com.jerboa.R
-import com.jerboa.datatypes.CommunitySafe
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.Tagline
-import com.jerboa.datatypes.api.GetUnreadCountResponse
-import com.jerboa.datatypes.api.MyUserInfo
+import com.jerboa.api.types.Community
+import com.jerboa.api.types.GetUnreadCountResponse
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.MyUserInfo
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.SortType
+import com.jerboa.api.types.Tagline
 import com.jerboa.datatypes.samplePersonSafe
 import com.jerboa.db.Account
 import com.jerboa.db.AccountViewModel
@@ -102,7 +102,7 @@ fun Drawer(
     onSignOutClick: () -> Unit,
     onClickListingType: (ListingType) -> Unit,
     myUserInfo: MyUserInfo?,
-    onCommunityClick: (community: CommunitySafe) -> Unit,
+    onCommunityClick: (community: Community) -> Unit,
     onClickProfile: () -> Unit,
     onClickInbox: () -> Unit,
     onClickSaved: () -> Unit,
@@ -149,7 +149,7 @@ fun DrawerContent(
     onSwitchAccountClick: (account: Account) -> Unit,
     onSignOutClick: () -> Unit,
     onClickListingType: (ListingType) -> Unit,
-    onCommunityClick: (community: CommunitySafe) -> Unit,
+    onCommunityClick: (community: Community) -> Unit,
     onClickProfile: () -> Unit,
     onClickInbox: () -> Unit,
     onClickSaved: () -> Unit,
@@ -195,7 +195,7 @@ fun DrawerItemsMain(
     onClickSettings: () -> Unit,
     onClickCommunities: () -> Unit,
     onClickListingType: (ListingType) -> Unit,
-    onCommunityClick: (community: CommunitySafe) -> Unit,
+    onCommunityClick: (community: Community) -> Unit,
     unreadCounts: GetUnreadCountResponse? = null,
 ) {
     val listState = rememberLazyListState()
@@ -364,7 +364,7 @@ fun DrawerAddAccountModePreview() {
 
 @Composable
 fun DrawerHeader(
-    myPerson: PersonSafe?,
+    myPerson: Person?,
     onClickShowAccountAddMode: () -> Unit,
     showAccountAddMode: Boolean = false,
     showAvatar: Boolean,
@@ -407,7 +407,7 @@ fun DrawerHeader(
 }
 
 @Composable
-fun AvatarAndAccountName(myPerson: PersonSafe?, showAvatar: Boolean) {
+fun AvatarAndAccountName(myPerson: Person?, showAvatar: Boolean) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(SMALL_PADDING),

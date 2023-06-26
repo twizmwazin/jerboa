@@ -13,15 +13,15 @@ import com.jerboa.CommentNodeData
 import com.jerboa.VoteType
 import com.jerboa.api.API
 import com.jerboa.api.retrofitErrorHandler
+import com.jerboa.api.types.CommentSortType
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.CommunityModeratorView
+import com.jerboa.api.types.GetComments
+import com.jerboa.api.types.GetPost
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PostView
 import com.jerboa.buildCommentsTree
-import com.jerboa.datatypes.CommentSortType
-import com.jerboa.datatypes.CommentView
-import com.jerboa.datatypes.CommunityModeratorView
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.PostView
-import com.jerboa.datatypes.api.GetComments
-import com.jerboa.datatypes.api.GetPost
 import com.jerboa.db.Account
 import com.jerboa.serializeToMap
 import com.jerboa.toastException
@@ -64,7 +64,7 @@ class PostViewModel : ViewModel() {
         ctx: Context,
         changeSortType: CommentSortType? = null,
     ) {
-        val api = API.getInstance()
+        val api = API!!
 
         // Set the commentId for the right case
         id.fold({ commentId.value = null }, { commentId.value = it })
@@ -148,7 +148,7 @@ class PostViewModel : ViewModel() {
         account: Account?,
         ctx: Context,
     ) {
-        val api = API.getInstance()
+        val api = API!!
         val commentId = commentView.comment.id
 
         viewModelScope.launch {
@@ -259,7 +259,7 @@ class PostViewModel : ViewModel() {
     }
 
     fun blockCreator(
-        creator: PersonSafe,
+        creator: Person,
         account: Account,
         ctx: Context,
     ) {

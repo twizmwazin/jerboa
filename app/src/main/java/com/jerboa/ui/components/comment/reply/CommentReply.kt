@@ -19,10 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jerboa.R
-import com.jerboa.datatypes.CommentReplyView
-import com.jerboa.datatypes.CommentView
-import com.jerboa.datatypes.PersonMentionView
-import com.jerboa.datatypes.PostView
+import com.jerboa.api.types.CommentReplyView
+import com.jerboa.api.types.CommentView
+import com.jerboa.api.types.PersonMentionView
+import com.jerboa.api.types.PostView
 import com.jerboa.datatypes.sampleCommentView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.comment.CommentNodeHeader

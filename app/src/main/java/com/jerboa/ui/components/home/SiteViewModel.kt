@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jerboa.api.getSiteWrapper
-import com.jerboa.datatypes.api.GetSiteResponse
+import com.jerboa.api.types.GetSiteResponse
 import kotlinx.coroutines.launch
 
 class SiteViewModel : ViewModel() {

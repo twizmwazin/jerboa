@@ -17,8 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.jerboa.R
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.PrivateMessageView
+import com.jerboa.api.types.Person
+import com.jerboa.api.types.PrivateMessageView
 import com.jerboa.datatypes.samplePrivateMessageView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.common.ActionBarButton
@@ -37,7 +37,7 @@ fun PrivateMessageHeader(
     myPersonId: Int,
     showAvatar: Boolean,
 ) {
-    val otherPerson: PersonSafe
+    val otherPerson: Person
     val fromOrTo: String
 
     if (isCreator(myPersonId, privateMessageView)) {

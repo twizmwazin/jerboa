@@ -44,8 +44,8 @@ import com.google.accompanist.flowlayout.FlowCrossAxisAlignment
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.jerboa.R
-import com.jerboa.datatypes.PersonSafe
-import com.jerboa.datatypes.api.GetUnreadCountResponse
+import com.jerboa.api.types.GetUnreadCountResponse
+import com.jerboa.api.types.Person
 import com.jerboa.datatypes.samplePersonSafe
 import com.jerboa.datatypes.samplePost
 import com.jerboa.db.Account
@@ -217,7 +217,7 @@ fun BottomAppBarAllPreview() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CommentOrPostNodeHeader(
-    creator: PersonSafe,
+    creator: Person,
     score: Int,
     myVote: Int?,
     published: String,

@@ -14,9 +14,9 @@ import com.jerboa.api.API
 import com.jerboa.api.fetchPostsWrapper
 import com.jerboa.api.getSiteWrapper
 import com.jerboa.api.retrofitErrorHandler
-import com.jerboa.datatypes.ListingType
-import com.jerboa.datatypes.SortType
-import com.jerboa.datatypes.api.Login
+import com.jerboa.api.types.ListingType
+import com.jerboa.api.types.Login
+import com.jerboa.api.types.SortType
 import com.jerboa.db.Account
 import com.jerboa.db.AccountViewModel
 import com.jerboa.fetchInitialData
@@ -41,8 +41,9 @@ class LoginViewModel : ViewModel() {
         homeViewModel: HomeViewModel,
         ctx: Context,
     ) {
-        val originalInstance = API.currentInstance
-        val api = API.changeLemmyInstance(instance)
+        val originalInstance = API!!.currentInstance
+        val api = API!!
+        api.currentInstance = instance
 
         viewModelScope.launch {
             try {
@@ -62,7 +63,7 @@ class LoginViewModel : ViewModel() {
                         msg,
                         Toast.LENGTH_SHORT,
                     ).show()
-                    API.changeLemmyInstance(originalInstance)
+                    api.currentInstance = originalInstance
                     this.cancel()
                     return@launch
                 }
@@ -75,7 +76,7 @@ class LoginViewModel : ViewModel() {
                     msg,
                     Toast.LENGTH_SHORT,
                 ).show()
-                API.changeLemmyInstance(originalInstance)
+                api.currentInstance = originalInstance
                 this.cancel()
                 return@launch
             }
@@ -99,14 +100,8 @@ class LoginViewModel : ViewModel() {
             val posts = fetchPostsWrapper(
                 account = account,
                 ctx = ctx,
-                listingType = ListingType.values()[
-                    luv.local_user
-                        .default_listing_type,
-                ],
-                sortType = SortType.values()[
-                    luv.local_user
-                        .default_sort_type,
-                ],
+                listingType = luv.local_user.default_listing_type,
+                sortType = luv.local_user.default_sort_type,
                 page = 1,
             )
             homeViewModel.posts.clear()
